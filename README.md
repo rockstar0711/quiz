@@ -85,3 +85,26 @@
 
     ```
 
+3. Let's say you have a file with a following structure:
+    "id,name,value
+    1,Dan,150
+    2,Peter,300
+    3,Mark,400
+    4,Victor,600"
+
+    Write a function in node.js that reads this file and returns the number, which is a sum of all "value" numbers from the file;
+
+    ```Answer
+    'use strict';
+
+    const fs = require('fs');
+
+    let rawData = fs.readFileSync('student.json');
+    let students = JSON.parse(rawData);
+    let sum = 0;
+    students.forEach(student => {
+        sum += student.value    
+    });
+
+    console.log(sum);
+    ```
