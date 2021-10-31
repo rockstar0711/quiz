@@ -22,10 +22,10 @@
             { room_type: "Twin", vacant_rooms: 8, price: 60 }
         ];
 
-        const showRoom = ( {room_type, vacant_rooms, price} ) => {
+        const showRoom = ( {room_type, vacant_rooms, price}, index ) => {
             return (
                 <li>
-                    {room_type, vacant_rooms, price}
+                    {`${index}. ${room_type}, ${vacant_rooms}, ${price}` }
                 </li>
             )
         } 
@@ -33,7 +33,7 @@
         return (
             <ol>
                 {rooms.map((room, index) => {
-                    <li>{ showRoom(room) }</li>
+                    <li>{ showRoom(room, index) }</li>
                 })}
             </ol>
         )
@@ -49,4 +49,39 @@
     c) it prints "foobar" if NUMBER is divisible by 14;
     d) it prints NUMBER value for other cases;
     note: NUMBER is a positive integer number;
+
+    ```Answer
+    function main (num) {
+        if(num < 1){
+            console.error("Please input positive integer")
+            return;
+        }
+        let result = '';
+        const {divisibleByTwo, divisibleBySeven} = getRemainder(num);
+        if(divisibleByTwo){
+            result = 'foo'
+        }
+        if(divisibleBySeven){
+            result = 'bar'
+        }
+        if(divisibleBySeven&&divisibleByTwo){
+            result = 'foobar'
+        }
+        return result;
+    }
+
+    function getRemainder(num){
+        let divisibleBySeven, divisibleByTwo = false;
+        if(num % 2 === 0){
+            divisibleByTwo = true;
+        }
+        if(num % 7 === 0){
+            divisibleBySeven = true;
+        }
+        return {divisibleByTwo, divisibleBySeven};
+    }
+
+    console.log(main(-1))
+
+    ```
 
